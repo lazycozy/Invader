@@ -1,5 +1,13 @@
-class Player {
-    constructor(x, y, width, height) {
+import { Bullet } from './Bullet';
+
+export class Player {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    speed: number;
+
+    constructor(x: number, y: number, width: number, height: number) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -7,7 +15,7 @@ class Player {
         this.speed = 5;
     }
 
-    move(direction) {
+    move(direction: 'left' | 'right') {
         if (direction === 'left') {
             this.x -= this.speed;
         } else if (direction === 'right') {
@@ -16,10 +24,11 @@ class Player {
     }
 
     shoot() {
-        return new Bullet(this.x + this.width / 2, this.y, 10, 10);
+        // Bulletのコンストラクタは(x, y, speed)の3引数
+        return new Bullet(this.x + this.width / 2, this.y, 10);
     }
 
-    draw(context) {
+    draw(context: CanvasRenderingContext2D) {
         context.fillStyle = 'blue';
         context.fillRect(this.x, this.y, this.width, this.height);
     }

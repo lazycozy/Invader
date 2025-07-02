@@ -1,4 +1,4 @@
-class Invader {
+export class Invader {
     x: number;
     y: number;
     width: number;
